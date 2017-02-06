@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="fixed">
+<head>
+  <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js" data-semver="1.2.16"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"/>
+</head>
+<body ng-controller="OuterCtrl" style="margin: 10px">
+
+  <p> You have {{model.dollars}} dollars </p>
+  <some-widget ng-repeat="customer in model.customers" info="model.dollars" customer-name="customer">
+  </some-widget>
+
+  <script>
+      angular.module('fixed',[]).controller('OuterCtrl', function($scope, $interval) {
+        $scope.model = {};
+        $scope.model.dollars = 5;
+        $scope.model.customers= ["Tom", "Bobby", "Sally"];
+      });
+      angular.module('fixed').directive('someWidget', function() {
+        return {
+          restrict: 'E',
+          template: '<div class="form-group label-static"><label class="control-label">{{customerName}}\'s Money:</label><input ng-model="info" type="text" class="form-control" placeholder="Money!"></div>',
+          scope: {
+            customerName: '=',
+            info: '='
+          }
+        };
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="simpleApp">
+<head>
+  <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js" data-semver="1.2.16"></script>
+  <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="bower_components/moment-duration-format/lib/moment-duration-format.js"></script>
+  <script src="app.js"></script>
+  
+</head>
+<body>
+
+
+  <div ng-controller="CounterController"><center><h2>Time since app started: {{model.elapsed}} </center></h2></div>
+  <br/><br/>
+
+  <div ng-controller="TableController" class="container">
+    <table class="table">
+      <tr>
+        <th>
+        </th>
+        <th ng-repeat="val in model.header">
+        {{val}}
+        </th>
+      </tr>
+      <tbody>
+      <tr ng-repeat="rows in model.table">
+        <td ng-repeat="vals in rows track by $index">
+          {{vals}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
